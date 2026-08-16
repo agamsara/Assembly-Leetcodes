@@ -1,3 +1,3 @@
-nasm -f elf64 first_pair_over.asm -o first_pair_over.o
-gcc first_pair_over.c first_pair_over.o -o test
+nasm -f elf64 count_bits.asm -o count_bits.o
+gcc count_bits.c count_bits.o -o test
 ./test
