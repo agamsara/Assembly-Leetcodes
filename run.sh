@@ -1,3 +1,3 @@
-nasm -f elf64 count_bits.asm -o count_bits.o
-gcc count_bits.c count_bits.o -o test
+nasm -f elf64 is_power_of_two.asm -o reverse_byte.o
+gcc is_power_of_two.c reverse_byte.o -o test
 ./test
