@@ -1,3 +1,3 @@
-nasm -f elf64 is_power_of_two.asm -o reverse_byte.o
-gcc is_power_of_two.c reverse_byte.o -o test
+nasm -f elf64 -g -F dwarf merge_sorted.asm -o merge_sorted.o
+gcc -g merge_sorted.c merge_sorted.o -o test
 ./test
