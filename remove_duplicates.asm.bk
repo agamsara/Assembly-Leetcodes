@@ -1,0 +1,45 @@
+section .text
+global remove_duplicates
+remove_duplicates:
+    ;sorted array
+
+    mov r12, 0; accum
+    imul rsi, 8
+    add rsi, rdi
+
+    mov r8, rdi; array pointer
+    .loop:
+        mov r11, 0; number of dups in a row
+        .keepMovingRight:
+
+            add r11, 1
+            lea r13, [r8+8*r11]
+            cmp r13, rsi
+            ;jl .skipSetMax
+            jge .endProgram
+            ;call .setMax
+            ;.skipSetMax:
+            mov r10, qword[r8+8*r11]
+            cmp qword[r8], r10
+            je .keepMovingRight
+        ;dups are done
+        mov r13, qword[r8+8*r11]
+        mov qword[r8], r13
+
+        mov r13, r11
+        imul r13, 8
+        add r13, r8
+
+        add r8, r13; move the pointer however many times to get to the last dup
+        add r12, 1; uptic to track new lenght
+
+        cmp r13, rsi
+        jl .loop
+
+        ret
+.setMax:
+    mov r11, r8
+    ret
+.endProgram:
+    mov rax, r8
+    ret
